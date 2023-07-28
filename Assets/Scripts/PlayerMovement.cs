@@ -18,7 +18,13 @@ void Start ()
 
 void Update ()
 {
+    
    horizontal = Input.GetAxisRaw("Horizontal");
+   if(horizontal > 0){
+    transform.localScale = new Vector2(1.25f,1.25f);
+   }else if (horizontal < 0){
+    transform.localScale = new Vector2(-1.25f, -1.25f);
+   }
    vertical = Input.GetAxisRaw("Vertical"); 
 }
 
