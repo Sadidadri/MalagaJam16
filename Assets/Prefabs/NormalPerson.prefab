@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4520942147657240966}
   - component: {fileID: 6347020431392133418}
   - component: {fileID: 5156497186677357669}
+  - component: {fileID: 8371090205869697331}
   m_Layer: 0
   m_Name: NormalPerson
   m_TagString: Enemy
@@ -76,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 973ad0898b1b6324e8ba6353f87f4755, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -192,3 +193,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySpriteRenderer: {fileID: 0}
   movementSpeed: 5
+  monster_type: 1
+--- !u!114 &8371090205869697331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 477290871969937330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e39f6090724e4a4a8aadeb042afa2bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
