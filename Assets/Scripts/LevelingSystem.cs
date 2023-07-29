@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
+using UnityEngine.UIElements;
 
-public class LevelSystem : MonoBehaviour
+public class LevelingSystem : MonoBehaviour
 {
-    public static LevelSystem instance;
-    [SerializeField] private EnemyScript subjectToObserve;
+    Slider expSlider;
 
     int level = 0;
     int currentExp;
@@ -14,16 +14,14 @@ public class LevelSystem : MonoBehaviour
 
     [SerializeField] float firstLevelExp = 50f;
 
-    private void OnEnemyDeath(int exp)
-    {
-        Debug.Log("Observer responds " + exp);
-    }
-
     private void Awake()
     {
-        if (instance != null) return;
-        instance = this;
+        expSlider = GetComponent<Slider>();
+    }
 
+    private void Start()
+    {
+        expSlider.value = 0f;
         SetLevel(1);
     }
 
@@ -32,6 +30,7 @@ public class LevelSystem : MonoBehaviour
         this.level = value;
         currentExp = currentExp - expToNextLevel;
         expToNextLevel = (int)(firstLevelExp * Mathf.Pow(level + 1, 2) - (5 * (level + 1)));
+        //updateLevelUI();
     }
 
     public bool AddExp(int expToAdd)
@@ -41,11 +40,13 @@ public class LevelSystem : MonoBehaviour
         if(currentExp >= expToNextLevel)
         {
             SetLevel(level + 1);
-            Debug.Log("Level up!");
             return true;
         }
 
-        //Update UI
+        expSlider.value = (float) Mathf.Round(currentExp / expToNextLevel);
+
         return false;
     }
+
+//    void updateLevelUI()
 }
