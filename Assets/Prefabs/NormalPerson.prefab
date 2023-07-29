@@ -172,11 +172,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc8d0658fda16a24f9f7fffa7a00a8ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreTxT: {fileID: 0}
-  enemy_defeated_xp: 10
   scoreUI: {fileID: 0}
+  levelingSystem: {fileID: 0}
   enemyExp: 10
-  enemyScore: 1
+  enemyScore: 20
   hitPoints: 3
   enemySpriteRenderer: {fileID: 0}
 --- !u!114 &5156497186677357669
