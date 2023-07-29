@@ -2316,7 +2316,6 @@ GameObject:
   - component: {fileID: 2052177869}
   - component: {fileID: 2052177871}
   - component: {fileID: 2052177870}
-  - component: {fileID: 2052177872}
   m_Layer: 0
   m_Name: Flamethrower
   m_TagString: Flamethrower
@@ -2436,20 +2435,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2052177872
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2052177868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c286dc354a0d6b54fb31e6e3ed942164, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerTag: Player
-  damageTime: 0.5
 --- !u!1001 &1950194726248878579
 PrefabInstance:
   m_ObjectHideFlags: 0

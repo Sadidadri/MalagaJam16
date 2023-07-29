@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject flameThrower;
     public float flamethrowerDuration = 3f; // Duration of the flamethrower in seconds
     private bool isFlamethrowerActive = false;
+    float offset = 2.8f;
 
     public float runSpeed = 20.0f;
 
@@ -33,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update ()
     {
-        // Movimiento del personaje
+    // Movimiento del personaje
     horizontal = Input.GetAxisRaw("Horizontal");
     vertical = Input.GetAxisRaw("Vertical");
 
@@ -44,10 +45,13 @@ public class PlayerMovement : MonoBehaviour
         
 
     if(horizontal > 0){
-
+        flameThrower.transform.position = new Vector2(transform.position.x + offset,transform.position.y);
         transform.localScale = new Vector2(PLAYER_ORIENTATION_SCALE,PLAYER_ORIENTATION_SCALE);
     }else if (horizontal < 0){
+        flameThrower.transform.position = new Vector2((transform.position.x - offset ) ,transform.position.y);
         transform.localScale = new Vector2(PLAYER_ORIENTATION_SCALE * -1, PLAYER_ORIENTATION_SCALE * -1);
+    }else{
+        flameThrower.transform.position = new Vector2(flameThrower.transform.position.x,transform.position.y);
     }
 
     if (Input.GetKey(KeyCode.E)) 
