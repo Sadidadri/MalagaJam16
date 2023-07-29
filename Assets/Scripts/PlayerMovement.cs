@@ -65,11 +65,17 @@ public class PlayerMovement : MonoBehaviour
         private void Shoot()
         {
             Vector2 shootingDirection = new Vector2( body.transform.position.x + (lastPositionBulletStart.x * shootingPositionOffset), body.transform.position.y + (lastPositionBulletStart.y * shootingPositionOffset));
-            GameObject bullet = Instantiate(bulletPrefab, shootingDirection, Quaternion.identity);
-            Rigidbody2D bulletRigidbody = bullet.GetComponent<Rigidbody2D>();
-
             
-            bulletRigidbody.velocity = lastPositionBulletStart * (runSpeed + 5.0f) ;
+            GameObject bullet = ObjectPool.SharedInstance.GetPooledObject(); 
+            if (bullet != null) {
+                bullet.SetActive(true);
+                bullet.transform.position = shootingDirection;
+                Rigidbody2D bulletRigidbody = bullet.GetComponent<Rigidbody2D>();
+                bulletRigidbody.velocity = lastPositionBulletStart * (runSpeed + 5.0f) ;
+            }
+        //GameObject bullet = Instantiate(bulletPrefab, shootingDirection, Quaternion.identity);
+        //Rigidbody2D bulletRigidbody = bullet.GetComponent<Rigidbody2D>();
+        //bulletRigidbody.velocity = lastPositionBulletStart * (runSpeed + 5.0f) ;
         }
 
 
