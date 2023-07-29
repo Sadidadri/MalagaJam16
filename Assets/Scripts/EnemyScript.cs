@@ -10,7 +10,7 @@ public class EnemyScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "bullet") getDamaged(1); // TODO : Tiene que reconocer el tipo de "arma" y recoger el valor de daño
+        if (collision.gameObject.CompareTag("Bullet")) getDamaged(1); // TODO : Tiene que reconocer el tipo de "arma" y recoger el valor de daï¿½o
     }
 
     void getDamaged(int damage)
@@ -22,8 +22,8 @@ public class EnemyScript : MonoBehaviour
 
     private void OnDeath()
     {
-        if (experience > 0)
-            LevelSystem.instance.AddExp(experience);
+        //if (experience > 0)
+        //    LevelSystem.instance.AddExp(experience);
         gameObject.SetActive(false);
     }
 }
