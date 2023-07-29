@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D body;
     float horizontal;
     float vertical;
+    float PLAYER_ORIENTATION_SCALE = 0.8633f;
 
     //Configuracion de disparo
     public GameObject bulletPrefab;
@@ -38,9 +39,9 @@ public class PlayerMovement : MonoBehaviour
 
     if(horizontal > 0){
 
-        transform.localScale = new Vector2(1.25f,1.25f);
+        transform.localScale = new Vector2(PLAYER_ORIENTATION_SCALE,PLAYER_ORIENTATION_SCALE);
     }else if (horizontal < 0){
-        transform.localScale = new Vector2(-1.25f, -1.25f);
+        transform.localScale = new Vector2(PLAYER_ORIENTATION_SCALE * -1, PLAYER_ORIENTATION_SCALE * -1);
     }
 
     //Disparo del personaje
@@ -64,11 +65,17 @@ public class PlayerMovement : MonoBehaviour
         private void Shoot()
         {
             Vector2 shootingDirection = new Vector2( body.transform.position.x + (lastPositionBulletStart.x * shootingPositionOffset), body.transform.position.y + (lastPositionBulletStart.y * shootingPositionOffset));
-            GameObject bullet = Instantiate(bulletPrefab, shootingDirection, Quaternion.identity);
-            Rigidbody2D bulletRigidbody = bullet.GetComponent<Rigidbody2D>();
-
             
-            bulletRigidbody.velocity = lastPositionBulletStart * (runSpeed + 5.0f) ;
+            GameObject bullet = ObjectPool.SharedInstance.GetPooledObject(); 
+            if (bullet != null) {
+                bullet.SetActive(true);
+                bullet.transform.position = shootingDirection;
+                Rigidbody2D bulletRigidbody = bullet.GetComponent<Rigidbody2D>();
+                bulletRigidbody.velocity = lastPositionBulletStart * (runSpeed + 5.0f) ;
+            }
+        //GameObject bullet = Instantiate(bulletPrefab, shootingDirection, Quaternion.identity);
+        //Rigidbody2D bulletRigidbody = bullet.GetComponent<Rigidbody2D>();
+        //bulletRigidbody.velocity = lastPositionBulletStart * (runSpeed + 5.0f) ;
         }
 
 
