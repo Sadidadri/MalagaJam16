@@ -55,6 +55,7 @@ public class EnemyScript : MonoBehaviour
         scoreUI.UpdateScore(enemyScore);
         levelingSystem.AddExp(enemyExp);
 
+        Debug.Log("G Object: "+gameObject);
         gameObject.SetActive(false);
     }
 
