@@ -25,6 +25,7 @@ public class ScoreUI : MonoBehaviour
     public void UpdateScore(int addScore)
     {
         CurrentScore += addScore;
+        Debug.Log("Current: "+CurrentScore);
         scoreText.text = CurrentScore.ToString();
     }
 

@@ -174,6 +174,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreTxT: {fileID: 0}
   enemy_defeated_xp: 10
+  scoreUI: {fileID: 0}
+  enemyExp: 10
+  enemyScore: 1
   hitPoints: 3
   enemySpriteRenderer: {fileID: 0}
 --- !u!114 &5156497186677357669
@@ -188,4 +191,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2fdb6dd924169541a31d8ce0d31cb5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemySpriteRenderer: {fileID: 0}
   movementSpeed: 5

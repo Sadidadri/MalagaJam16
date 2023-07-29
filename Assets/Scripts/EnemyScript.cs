@@ -9,7 +9,7 @@ public class EnemyScript : MonoBehaviour
     private static int DEFAULT_HIT_POINTS = 3;
     public Text scoreTxT;
     [SerializeField] int enemy_defeated_xp = 10;
-    [SerializeField] ScoreUI scoreUI;
+    public ScoreUI scoreUI;
 
     [SerializeField] int enemyExp = 10;
     [SerializeField] int enemyScore = 1;

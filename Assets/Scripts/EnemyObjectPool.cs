@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class EnemyObjectPool : MonoBehaviour
 {
-   public static EnemyObjectPool SharedInstance;
+    [SerializeField] private ScoreUI scoreUI;
+    public static EnemyObjectPool SharedInstance;
     public List<GameObject> pooledObjects;
     public GameObject objectToPool;
     public int amountToPool;
@@ -21,6 +22,7 @@ void Start()
     for(int i = 0; i < amountToPool; i++)
     {
         tmp = Instantiate(objectToPool);
+        tmp.GetComponent<EnemyScript>().scoreUI = scoreUI;
         tmp.SetActive(false);
         pooledObjects.Add(tmp);
     }

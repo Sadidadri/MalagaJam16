@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class EnemySpawnerScript : MonoBehaviour
 {
+
     public GameObject enemyPrefab;
     public float spawnInterval = 3f; // Adjust this to control the time between spawns
     public Transform destination; // Assign the destination position in the Inspector
