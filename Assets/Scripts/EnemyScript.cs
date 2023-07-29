@@ -6,10 +6,11 @@ using UnityEngine.UI;
 
 public class EnemyScript : MonoBehaviour
 {
-    [SerializeField] ScoreUI scoreUI;
-
     [SerializeField] int enemyExp = 10;
     [SerializeField] int enemyScore = 1;
+
+    [SerializeField] ScoreUI scoreUI;
+    [SerializeField] LevelingSystem levelingSystem;
 
     // TODO : Por definir [SerializeField] int damage = 10;
     [SerializeField] int hitPoints = 3;
@@ -43,9 +44,10 @@ public class EnemyScript : MonoBehaviour
     {
         //if (enemy_defeated_xp > 0)
         //    LevelSystem.instance.AddExp(experience);
-        
-        gameObject.SetActive(false);
         scoreUI.UpdateScore(enemyScore);
+        
+
+        gameObject.SetActive(false);
     }
 
 
