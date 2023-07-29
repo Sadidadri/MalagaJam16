@@ -36,7 +36,7 @@ public class EnemyMovement : MonoBehaviour
         if (transform.position == destinationPosition)
         {
             isMoving = false;
-            enemySpriteRenderer.enabled = false;
+            gameObject.SetActive(false);
             
         }
     }
