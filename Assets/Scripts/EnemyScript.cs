@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyScript : MonoBehaviour
 {
-    [SerializeField] int experience = 10;
+
+    public Text scoreTxT;
+    [SerializeField] int enemy_defeated_xp = 10;
     // TODO : Por definir [SerializeField] int damage = 10;
-    [SerializeField] int hitPoints = 10;
+    [SerializeField] int hitPoints = 3;
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -22,8 +26,10 @@ public class EnemyScript : MonoBehaviour
 
     private void OnDeath()
     {
-        //if (experience > 0)
+        //if (enemy_defeated_xp > 0)
         //    LevelSystem.instance.AddExp(experience);
+        
+        scoreTxT.text = (int.Parse(scoreTxT.text) + enemy_defeated_xp).ToString();
         gameObject.SetActive(false);
     }
 }
