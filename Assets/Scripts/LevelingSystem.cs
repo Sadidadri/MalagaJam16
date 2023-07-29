@@ -1,16 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
 public class LevelSystem : MonoBehaviour
 {
     public static LevelSystem instance;
+    [SerializeField] private EnemyScript subjectToObserve;
 
     int level = 0;
     int currentExp;
     int expToNextLevel;
 
     [SerializeField] float firstLevelExp = 50f;
+
+    private void OnEnemyDeath(int exp)
+    {
+        Debug.Log("Observer responds " + exp);
+    }
 
     private void Awake()
     {

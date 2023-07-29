@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,11 @@ public class EnemyScript : MonoBehaviour
     private static int DEFAULT_HIT_POINTS = 3;
     public Text scoreTxT;
     [SerializeField] int enemy_defeated_xp = 10;
+    [SerializeField] ScoreUI scoreUI;
+
+    [SerializeField] int enemyExp = 10;
+    [SerializeField] int enemyScore = 1;
+
     // TODO : Por definir [SerializeField] int damage = 10;
     [SerializeField] int hitPoints = DEFAULT_HIT_POINTS;
 
@@ -46,8 +52,8 @@ public class EnemyScript : MonoBehaviour
         //if (enemy_defeated_xp > 0)
         //    LevelSystem.instance.AddExp(experience);
         
-        //scoreTxT.text = (int.Parse(scoreTxT.text) + enemy_defeated_xp).ToString();
         gameObject.SetActive(false);
+        scoreUI.UpdateScore(enemyScore);
     }
 
 
