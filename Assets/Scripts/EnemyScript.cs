@@ -41,7 +41,7 @@ public class EnemyScript : MonoBehaviour
         //if (enemy_defeated_xp > 0)
         //    LevelSystem.instance.AddExp(experience);
         
-        scoreTxT.text = (int.Parse(scoreTxT.text) + enemy_defeated_xp).ToString();
+        //scoreTxT.text = (int.Parse(scoreTxT.text) + enemy_defeated_xp).ToString();
         gameObject.SetActive(false);
     }
 
