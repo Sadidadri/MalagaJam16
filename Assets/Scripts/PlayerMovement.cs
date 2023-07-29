@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     float vertical;
     float PLAYER_ORIENTATION_SCALE = 0.8633f;
 
+
     //Configuracion de disparo
     public GameObject bulletPrefab;
     float shootingPositionOffset = 0.8f;
@@ -17,12 +18,17 @@ public class PlayerMovement : MonoBehaviour
     //public Transform firePoint;
     public float fireRate = 0.5f;
     private float nextFireTime = 0f;
+    //Config lanzallamas
+    public GameObject flameThrower;
+    public float flamethrowerDuration = 3f; // Duration of the flamethrower in seconds
+    private bool isFlamethrowerActive = false;
 
     public float runSpeed = 20.0f;
 
     void Start ()
     {
-    body = GetComponent<Rigidbody2D>(); 
+        flameThrower.SetActive(false);
+        body = GetComponent<Rigidbody2D>(); 
     }
 
     void Update ()
@@ -44,6 +50,12 @@ public class PlayerMovement : MonoBehaviour
         transform.localScale = new Vector2(PLAYER_ORIENTATION_SCALE * -1, PLAYER_ORIENTATION_SCALE * -1);
     }
 
+    if (Input.GetKey(KeyCode.E)) 
+        {
+            ActivateFlamethrower();
+
+        }
+
     //Disparo del personaje
     if (Time.time >= nextFireTime)
         {
@@ -53,6 +65,34 @@ public class PlayerMovement : MonoBehaviour
                 nextFireTime = Time.time + fireRate;
             }
         }
+    }
+
+    // Call this function to activate the flamethrower
+    public void ActivateFlamethrower()
+    {
+        if (!isFlamethrowerActive)
+        {
+            StartCoroutine(ActivateFlameThrowerCoroutine());
+        }
+    }
+
+      private IEnumerator ActivateFlameThrowerCoroutine()
+    {
+        isFlamethrowerActive = true;
+
+        
+        if (flameThrower != null)
+        {
+            flameThrower.SetActive(true);
+        }
+
+
+        // Wait for the ability duration
+        yield return new WaitForSeconds(flamethrowerDuration);
+
+
+        flameThrower.SetActive(false);
+        isFlamethrowerActive = false;
     }
 
     

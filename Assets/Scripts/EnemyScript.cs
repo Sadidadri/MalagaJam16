@@ -37,7 +37,11 @@ public class EnemyScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Bullet")) {
             getDamaged(1); 
             collision.gameObject.SetActive(false);
-            }// TODO : Tiene que reconocer el tipo de "arma" y recoger el valor de da�o
+        }
+
+        if (collision.gameObject.CompareTag("Flamethrower")) {
+            getDamaged(1); 
+        }
     }
 
     void getDamaged(int damage)
