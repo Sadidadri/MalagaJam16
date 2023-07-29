@@ -23,11 +23,17 @@ public class EnemySpawnerScript : MonoBehaviour
     private void SpawnEnemy()
     {
         // Instantiate the enemy prefab at the spawner's position
-        GameObject newEnemy = Instantiate(enemyPrefab, transform.position, Quaternion.identity);
-        EnemyMovement movementScript = newEnemy.GetComponent<EnemyMovement>();
-        if (movementScript != null)
-        {
-            movementScript.SetDestination(destination.position);
+        GameObject newEnemy = EnemyObjectPool.SharedInstance.GetPooledObject(); 
+        if (newEnemy != null) {
+            newEnemy.transform.position = transform.position;
+            newEnemy.SetActive(true);
+
+             EnemyMovement movementScript = newEnemy.GetComponent<EnemyMovement>();
+            if (movementScript != null)
+            {
+                movementScript.SetDestination(destination.position);
+            }
         }
+       
     }
 }

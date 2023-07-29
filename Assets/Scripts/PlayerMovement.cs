@@ -66,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Vector2 shootingDirection = new Vector2( body.transform.position.x + (lastPositionBulletStart.x * shootingPositionOffset), body.transform.position.y + (lastPositionBulletStart.y * shootingPositionOffset));
             
-            GameObject bullet = ObjectPool.SharedInstance.GetPooledObject(); 
+            GameObject bullet = BulletObjectPool.SharedInstance.GetPooledObject(); 
             if (bullet != null) {
                 bullet.SetActive(true);
                 bullet.transform.position = shootingDirection;
