@@ -1,23 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
+
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class LevelingSystem : MonoBehaviour
 {
-    Slider expSlider;
+    [SerializeField] Text levelText;
 
+    [SerializeField] Slider expSlider;
     int level = 0;
     int currentExp;
     int expToNextLevel;
 
     [SerializeField] float firstLevelExp = 50f;
-
-    private void Awake()
-    {
-        expSlider = GetComponent<Slider>();
-    }
 
     private void Start()
     {
@@ -29,8 +23,8 @@ public class LevelingSystem : MonoBehaviour
     {
         this.level = value;
         currentExp = currentExp - expToNextLevel;
-        expToNextLevel = (int)(firstLevelExp * Mathf.Pow(level + 1, 2) - (5 * (level + 1)));
-        //updateLevelUI();
+        expToNextLevel = (int)(firstLevelExp + Mathf.Pow(level + 1, 2) - (5 * (level + 1)));
+        updateLevelUI();
     }
 
     public bool AddExp(int expToAdd)
@@ -43,10 +37,14 @@ public class LevelingSystem : MonoBehaviour
             return true;
         }
 
-        expSlider.value = (float) Mathf.Round(currentExp / expToNextLevel);
+        Debug.Log("Current: " + currentExp + " " + expToNextLevel);
+        updateLevelUI();
 
         return false;
     }
-
-//    void updateLevelUI()
+    void updateLevelUI()
+    {
+        expSlider.value = (float) currentExp / expToNextLevel;
+        levelText.text = this.level.ToString();
+    }
 }

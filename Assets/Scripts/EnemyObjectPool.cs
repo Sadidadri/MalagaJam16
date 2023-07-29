@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemyObjectPool : MonoBehaviour
 {
     [SerializeField] private ScoreUI scoreUI;
+    [SerializeField] private LevelingSystem levelingSystem;
+
     public static EnemyObjectPool SharedInstance;
     public List<GameObject> pooledObjects;
     public GameObject objectToPool;
@@ -23,6 +25,7 @@ void Start()
     {
         tmp = Instantiate(objectToPool);
         tmp.GetComponent<EnemyScript>().scoreUI = scoreUI;
+        tmp.GetComponent<EnemyScript>().levelingSystem = levelingSystem;
         tmp.SetActive(false);
         pooledObjects.Add(tmp);
     }

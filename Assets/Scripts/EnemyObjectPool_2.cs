@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemyObjectPool2 : MonoBehaviour
 {
     [SerializeField] private ScoreUI scoreUI;
+    [SerializeField] private LevelingSystem levelingSystem;
+
     public static EnemyObjectPool2 SharedInstance;
     public List<GameObject> pooledObjects;
     public GameObject objectToPool;
