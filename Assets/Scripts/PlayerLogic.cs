@@ -13,6 +13,8 @@ public class PlayerLogic : MonoBehaviour
     public SpriteRenderer playerSpriteRenderer; // Reference to the player's SpriteRenderer component.
     private int numberOfBlinks = 10;
 
+    public GameObject[] livesUI;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -60,7 +62,9 @@ public class PlayerLogic : MonoBehaviour
 
     private void LoseLife()
     {
+        livesUI[currentLives - 1].SetActive(false);
         currentLives--;
+
         Debug.Log("Your current number of lives are: "+currentLives);
 
         if (currentLives <= 0)
