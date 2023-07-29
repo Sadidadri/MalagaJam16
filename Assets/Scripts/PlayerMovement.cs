@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D body;
     float horizontal;
     float vertical;
-    float PLAYER_ORIENTATION_SCALE = 0.8633f;
+    float PLAYER_ORIENTATION_SCALE = 1;
 
 
     //Configuracion de disparo
@@ -45,13 +45,13 @@ public class PlayerMovement : MonoBehaviour
         
 
     if(horizontal > 0){
-        flameThrower.transform.position = new Vector2(transform.position.x + offset,transform.position.y);
-        transform.localScale = new Vector2(PLAYER_ORIENTATION_SCALE,PLAYER_ORIENTATION_SCALE);
+        flameThrower.transform.position = new Vector2(transform.position.x + offset,transform.position.y + .5f);
+        transform.localScale = new Vector2(PLAYER_ORIENTATION_SCALE * -1,PLAYER_ORIENTATION_SCALE);
     }else if (horizontal < 0){
-        flameThrower.transform.position = new Vector2((transform.position.x - offset ) ,transform.position.y);
-        transform.localScale = new Vector2(PLAYER_ORIENTATION_SCALE * -1, PLAYER_ORIENTATION_SCALE * -1);
+        flameThrower.transform.position = new Vector2((transform.position.x - offset ) ,transform.position.y +.5f);
+        transform.localScale = new Vector2(PLAYER_ORIENTATION_SCALE, PLAYER_ORIENTATION_SCALE);
     }else{
-        flameThrower.transform.position = new Vector2(flameThrower.transform.position.x,transform.position.y);
+        flameThrower.transform.position = new Vector2(flameThrower.transform.position.x,transform.position.y + .5f);
     }
 
     if (Input.GetKey(KeyCode.E)) 
@@ -108,7 +108,7 @@ public class PlayerMovement : MonoBehaviour
 
         private void Shoot()
         {
-            Vector2 shootingDirection = new Vector2( body.transform.position.x + (lastPositionBulletStart.x * shootingPositionOffset), body.transform.position.y + (lastPositionBulletStart.y * shootingPositionOffset));
+            Vector2 shootingDirection = new Vector2( body.transform.position.x + (lastPositionBulletStart.x * shootingPositionOffset), body.transform.position.y + (lastPositionBulletStart.y * shootingPositionOffset) + .5f);
             
             GameObject bullet = BulletObjectPool.SharedInstance.GetPooledObject(); 
             if (bullet != null) {
