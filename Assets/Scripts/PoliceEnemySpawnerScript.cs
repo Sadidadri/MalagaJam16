@@ -1,12 +1,12 @@
 using UnityEngine;
 
-public class EnemySpawnerScript : MonoBehaviour
+public class PoliceEnemySpawnerScript : MonoBehaviour
 {
 
     public GameObject enemyPrefab;
-    public float spawnInterval = 3f; // Adjust this to control the time between spawns
-    public Transform destination; // Assign the destination position in the Inspector
+    public float spawnInterval = 7f; // Adjust this to control the time between spawns
     private float spawnTimer = 0f;
+    private Transform player; // Reference to the player's transform
 
     private void Update()
     {
@@ -24,10 +24,12 @@ public class EnemySpawnerScript : MonoBehaviour
 
     private void SpawnEnemy(int numberOfEnemies)
     {
+        // Find the player's GameObject by its tag (You should assign the "Player" tag to your player GameObject)
+        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
         // Instantiate the enemy prefab at the spawner's position
         for (int i = 0; i < numberOfEnemies; i++)
         {
-            GameObject newEnemy = EnemyObjectPool.SharedInstance.GetPooledObject(); 
+            GameObject newEnemy = EnemyObjectPool2.SharedInstance.GetPooledObject(); 
             if (newEnemy != null) {
             newEnemy.transform.position = transform.position;
             newEnemy.SetActive(true);
@@ -35,7 +37,7 @@ public class EnemySpawnerScript : MonoBehaviour
              EnemyMovement movementScript = newEnemy.GetComponent<EnemyMovement>();
             if (movementScript != null)
             {
-                movementScript.SetDestination(destination.position);
+                movementScript.SetDestination(playerObject.transform.position);
             }
         }
         }

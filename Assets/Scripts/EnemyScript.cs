@@ -37,11 +37,15 @@ public class EnemyScript : MonoBehaviour
    
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Bullet")) getDamaged(1); // TODO : Tiene que reconocer el tipo de "arma" y recoger el valor de da�o
+        if (collision.gameObject.CompareTag("Bullet")) {
+            getDamaged(1); 
+            collision.gameObject.SetActive(false);
+            }// TODO : Tiene que reconocer el tipo de "arma" y recoger el valor de da�o
     }
 
     void getDamaged(int damage)
     {
+
         hitPoints -= damage;
         StartCoroutine(BlinkSprite());
         if(hitPoints <= 0) OnDeath();
