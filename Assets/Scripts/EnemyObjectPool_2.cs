@@ -25,6 +25,7 @@ void Start()
     {
         tmp = Instantiate(objectToPool);
         tmp.GetComponent<EnemyScript>().scoreUI = scoreUI;
+        tmp.GetComponent<EnemyScript>().levelingSystem = levelingSystem;
         tmp.SetActive(false);
         pooledObjects.Add(tmp);
     }
