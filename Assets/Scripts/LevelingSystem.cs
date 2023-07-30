@@ -7,10 +7,9 @@ public class LevelingSystem : MonoBehaviour
     [SerializeField] Text levelText;
 
     [SerializeField] Slider expSlider;
-    int level = 0;
+    public int level = 0;
     int currentExp;
     int expToNextLevel;
-    public int Level { get; set; }
 
     [SerializeField] float firstLevelExp = 50f;
 
@@ -22,7 +21,7 @@ public class LevelingSystem : MonoBehaviour
 
     void SetLevel(int value)
     {
-        this.level = value;
+        level = value;
         currentExp = currentExp - expToNextLevel;
         expToNextLevel = (int)(firstLevelExp + Mathf.Pow(level + 1, 2) - (5 * (level + 1)));
         updateLevelUI();
@@ -46,6 +45,6 @@ public class LevelingSystem : MonoBehaviour
     void updateLevelUI()
     {
         expSlider.value = (float) currentExp / expToNextLevel;
-        levelText.text = this.level.ToString();
+        levelText.text = level.ToString();
     }
 }

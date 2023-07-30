@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update ()
     {
-    levelNumber = levelingSystem.Level;
+    levelNumber = levelingSystem.level;
     // Movimiento del personaje
     horizontal = Input.GetAxisRaw("Horizontal");
     vertical = Input.GetAxisRaw("Vertical");
