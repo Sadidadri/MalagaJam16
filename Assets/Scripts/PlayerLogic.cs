@@ -70,7 +70,7 @@ public class PlayerLogic : MonoBehaviour
         if (currentLives <= 0)
         {
             // Game Over: Load the Game Over scene
-            //SceneManager.LoadScene("GameOver");
+            SceneManager.LoadScene("GameOver");
         }
         else
         {
