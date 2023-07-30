@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class MenuPrincipal : MonoBehaviour
 {
     [SerializeField]
-    GameObject menuPrincipal, menuOpciones, menuGameplay;
+    GameObject menuPrincipal, menuOpciones;
     [SerializeField]
     Slider volumeSlider;
     [SerializeField]
@@ -38,52 +38,16 @@ public class MenuPrincipal : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    public bool OpenOptions()
+    public void OpenOptions()
     {
-        if (menuPrincipal != null && menuOpciones != null && SceneManager.GetActiveScene().buildIndex == 0)
-        {
-            menuPrincipal.SetActive(false);
-            menuOpciones.SetActive(true);
-            return true;
-        }
-
-        if(menuGameplay != null && menuOpciones != null && SceneManager.GetActiveScene().name == "Level1")
-        {
-            menuGameplay.SetActive(false);
-            menuOpciones.SetActive(true);
-            Time.timeScale = 0;
-            return true;
-        }
-
-        return false;
+        menuPrincipal.SetActive(false);
+        menuOpciones.SetActive(true);
     }
 
-    public bool ClosePause()
+    public void OpenMainMenu()
     {
-        if (menuGameplay != null && menuOpciones != null && SceneManager.GetActiveScene().name == "Level1")
-        {
-
-            menuOpciones.SetActive(false); 
-            menuGameplay.SetActive(true);
-
-            Time.timeScale = 1;
-            return true;
-        }
-
-        return false;
-    }
-
-    public bool OpenMainMenu()
-    {
-        if(menuPrincipal != null && menuOpciones != null && SceneManager.GetActiveScene().buildIndex == 0)
-        {
-            menuOpciones.SetActive(false);
-            menuPrincipal.SetActive(true);
-
-            return true;
-        }
-
-        return false;
+        menuOpciones.SetActive(false);
+        menuPrincipal.SetActive(true);
     }
 
     public void GotoMainMenu() {

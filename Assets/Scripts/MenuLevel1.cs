@@ -24,17 +24,12 @@ public class MenuLevel1 : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    public bool OpenOptions()
+    public void OpenOptions()
     {
-        if(menuGameplay != null && menuOpciones != null && SceneManager.GetActiveScene().name == "Level1")
-        {
-            menuGameplay.SetActive(false);
-            menuOpciones.SetActive(true);
-            Time.timeScale = 0;
-            return true;
-        }
+        menuGameplay.SetActive(false);
+        menuOpciones.SetActive(true);
+        Time.timeScale = 0;
 
-        return false;
     }
 
     public void ClosePause()
