@@ -22,7 +22,13 @@ public class PlayerMovement : MonoBehaviour
     public GameObject flameThrower;
     public float flamethrowerDuration = 3f; // Duration of the flamethrower in seconds
     private bool isFlamethrowerActive = false;
+    private float flamethrowerCoolDown = 4;
     float offset = 2.8f;
+    //Config stomp
+    public GameObject stomp;
+    public float stompDuration = 0.5f; // Duration of the flamethrower in seconds
+    private bool isStompActive = false;
+    private float stompCoolDown = 6;
 
     public float runSpeed = 20.0f;
 
@@ -32,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start ()
     {
+        stomp.SetActive(false);
         flameThrower.SetActive(false);
         body = GetComponent<Rigidbody2D>(); 
     }
@@ -58,12 +65,20 @@ public class PlayerMovement : MonoBehaviour
     }else{
         flameThrower.transform.position = new Vector2(flameThrower.transform.position.x,transform.position.y + .5f);
     }
+    stomp.transform.position = new Vector2(transform.position.x,transform.position.y + .5f);
 
-    if(levelNumber >= 3){
+    if(levelNumber >= 1){
          if (Input.GetKey(KeyCode.E)) 
             {
                 ActivateFlamethrower();
 
+            }
+    }
+
+    if(levelNumber >= 1){
+         if (Input.GetKey(KeyCode.Q)) 
+            {
+                ActivateStomp();
             }
     }
    
@@ -101,12 +116,38 @@ public class PlayerMovement : MonoBehaviour
 
         // Wait for the ability duration
         yield return new WaitForSeconds(flamethrowerDuration);
-
-
         flameThrower.SetActive(false);
+        yield return new WaitForSeconds(flamethrowerCoolDown);
+
         isFlamethrowerActive = false;
     }
 
+public void ActivateStomp()
+    {
+        if (!isStompActive)
+        {
+            StartCoroutine(ActivateStompCoroutine());
+        }
+    }
+
+      private IEnumerator ActivateStompCoroutine()
+    {
+        isStompActive = true;
+
+        
+        if (stomp != null)
+        {
+            stomp.SetActive(true);
+        }
+
+
+        // Wait for the ability duration
+        yield return new WaitForSeconds(stompDuration);
+        stomp.SetActive(false);
+        yield return new WaitForSeconds(stompCoolDown);
+
+        isStompActive = false;
+    }
     
     private void FixedUpdate()
         {  

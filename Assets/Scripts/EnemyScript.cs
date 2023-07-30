@@ -42,6 +42,10 @@ public class EnemyScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Flamethrower")) {
             getDamaged(1); 
         }
+
+        if (collision.gameObject.CompareTag("Stomp")) {
+            getDamaged(2); 
+        }
     }
 
     void getDamaged(int damage)
