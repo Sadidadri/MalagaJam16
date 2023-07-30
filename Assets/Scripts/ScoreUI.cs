@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class ScoreUI : MonoBehaviour
@@ -26,6 +27,16 @@ public class ScoreUI : MonoBehaviour
     {
         CurrentScore += addScore;
         scoreText.text = CurrentScore.ToString();
+    }
+
+    private void OnDisable()
+    {
+        PlayerPrefs.SetFloat("Score", currentScore);
+    }
+
+    private void OnEnable()
+    {
+        PlayerPrefs.DeleteKey("Score");
     }
 
 }

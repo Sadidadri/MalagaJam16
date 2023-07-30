@@ -6,16 +6,20 @@ using UnityEngine.SceneManagement;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+
 public class GameOverSceneManager : MonoBehaviour
 {
     public Image fadeImage;
     public float fadeDuration = 1.5f;
 
     private float currentTime = 0 ;
-
+    [SerializeField] Text scoreText;
+    
     private void Start()
     {
         currentTime = 0;
+        scoreText.text = PlayerPrefs.GetFloat("Score").ToString();
         StartCoroutine(FadeIn());
     }
 
