@@ -35,7 +35,7 @@ public class MenuPrincipal : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("InicioJuego");
     }
 
     public void OpenOptions()
