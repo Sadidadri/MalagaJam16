@@ -75,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
     }
     stomp.transform.position = new Vector2(transform.position.x,transform.position.y );
 
-    if(levelNumber >= 1){
+    if(levelNumber >= 3){
         if(flameThrowerLockImage){
                     Destroy(flameThrowerLockImage);
                 }
@@ -87,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
             }
     }
 
-    if(levelNumber >= 1){
+    if(levelNumber >= 5){
           if(stompLockImage){
                     Destroy(stompLockImage);
                 }
