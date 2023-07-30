@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class PlayerMovement : MonoBehaviour
 {
     //Configuracion movimiento player
@@ -26,6 +26,10 @@ public class PlayerMovement : MonoBehaviour
 
     public float runSpeed = 20.0f;
 
+    //Leveling count
+    [SerializeField] Text levelText;
+    int levelNumber;
+
     void Start ()
     {
         flameThrower.SetActive(false);
@@ -34,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update ()
     {
+    levelNumber = int.Parse(levelText.text);
     // Movimiento del personaje
     horizontal = Input.GetAxisRaw("Horizontal");
     vertical = Input.GetAxisRaw("Vertical");
@@ -54,11 +59,14 @@ public class PlayerMovement : MonoBehaviour
         flameThrower.transform.position = new Vector2(flameThrower.transform.position.x,transform.position.y + .5f);
     }
 
-    if (Input.GetKey(KeyCode.E)) 
-        {
-            ActivateFlamethrower();
+    if(levelNumber >= 3){
+         if (Input.GetKey(KeyCode.E)) 
+            {
+                ActivateFlamethrower();
 
-        }
+            }
+    }
+   
 
     //Disparo del personaje
     if (Time.time >= nextFireTime)
