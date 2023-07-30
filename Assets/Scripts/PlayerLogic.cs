@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class PlayerLogic : MonoBehaviour
 {
     public int maxLives = 5;
@@ -69,7 +69,8 @@ public class PlayerLogic : MonoBehaviour
 
         if (currentLives <= 0)
         {
-            //WIP: Show Game Over
+            // Game Over: Load the Game Over scene
+            SceneManager.LoadScene("GameOver");
         }
         else
         {
