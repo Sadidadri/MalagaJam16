@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class MenuLevel1 : MonoBehaviour
 {
     [SerializeField]
-    GameObject menuOpciones, menuGameplay;
+    GameObject menuOpciones, menuGameplay, opcionesButtons, menuVolumen;
     [SerializeField]
     Slider volumeSlider;
     [SerializeField]
@@ -42,6 +42,19 @@ public class MenuLevel1 : MonoBehaviour
 
     public void GotoMainMenu() {
         SceneManager.LoadScene("MenuPrincipal");
+    }
+
+    public void OpenVolume()
+    {
+        opcionesButtons.SetActive(false);
+        menuVolumen.SetActive(true);
+
+    }
+
+    public void CloseVolume()
+    {
+        menuVolumen.SetActive(false);
+        opcionesButtons.SetActive(true);
     }
 
     public void SetVolume()
