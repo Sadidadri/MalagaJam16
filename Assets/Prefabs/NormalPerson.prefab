@@ -174,9 +174,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreUI: {fileID: 0}
   levelingSystem: {fileID: 0}
-  enemyExp: 10
-  enemyScore: 20
-  hitPoints: 3
+  enemyExp: 2
+  enemyScore: 5
+  hitPoints: 5
   enemySpriteRenderer: {fileID: 0}
 --- !u!114 &5156497186677357669
 MonoBehaviour:

@@ -19,7 +19,7 @@ public class PoliceEnemySpawnerScript : MonoBehaviour
             float random = Random.Range(0f, 1f);
             Debug.Log(random);
             if (random > .8)
-                SpawnEnemy(5);  
+                SpawnEnemy(3);  
             spawnTimer = spawnInterval; // Reset the timer
         }
 

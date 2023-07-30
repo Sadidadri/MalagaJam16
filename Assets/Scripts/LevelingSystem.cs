@@ -29,6 +29,8 @@ public class LevelingSystem : MonoBehaviour
 
     public bool AddExp(int expToAdd)
     {
+        if (level > 9) return false;
+
         currentExp += expToAdd;
 
         if(currentExp >= expToNextLevel)
