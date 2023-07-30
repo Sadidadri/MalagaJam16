@@ -9,6 +9,10 @@ public class PlayerMovement : MonoBehaviour
     float horizontal;
     float vertical;
     float PLAYER_ORIENTATION_SCALE = 1;
+    public SpriteRenderer playerSpriteRenderer;
+    public Sprite standardPlayerSprite;
+    public Sprite nutriaPlayerSprite;
+    public Sprite goblinPlayerSprite;
 
 
     //Configuracion de disparo
@@ -61,17 +65,17 @@ public class PlayerMovement : MonoBehaviour
         
 
     if(horizontal > 0){
-        flameThrower.transform.position = new Vector2(transform.position.x + offset,transform.position.y + .5f);
+        flameThrower.transform.position = new Vector2(transform.position.x + offset,transform.position.y );
         transform.localScale = new Vector2(PLAYER_ORIENTATION_SCALE * -1,PLAYER_ORIENTATION_SCALE);
     }else if (horizontal < 0){
-        flameThrower.transform.position = new Vector2((transform.position.x - offset ) ,transform.position.y +.5f);
+        flameThrower.transform.position = new Vector2((transform.position.x - offset ) ,transform.position.y );
         transform.localScale = new Vector2(PLAYER_ORIENTATION_SCALE, PLAYER_ORIENTATION_SCALE);
     }else{
-        flameThrower.transform.position = new Vector2(flameThrower.transform.position.x,transform.position.y + .5f);
+        flameThrower.transform.position = new Vector2(flameThrower.transform.position.x,transform.position.y );
     }
-    stomp.transform.position = new Vector2(transform.position.x,transform.position.y + .5f);
+    stomp.transform.position = new Vector2(transform.position.x,transform.position.y );
 
-    if(levelNumber >= 1){
+    if(levelNumber >= 3){
         if(flameThrowerLockImage){
                     Destroy(flameThrowerLockImage);
                 }
@@ -83,13 +87,13 @@ public class PlayerMovement : MonoBehaviour
             }
     }
 
-    if(levelNumber >= 1){
+    if(levelNumber >= 5){
           if(stompLockImage){
                     Destroy(stompLockImage);
                 }
          if (Input.GetKey(KeyCode.Q)) 
             {
-              
+                
                 ActivateStomp();
             }
     }
@@ -111,6 +115,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!isFlamethrowerActive)
         {
+            SetPlayerSprite(nutriaPlayerSprite);
             flameThrowerCdImage.gameObject.SetActive(true);
             StartCoroutine(ActivateFlameThrowerCoroutine());
         }
@@ -130,6 +135,7 @@ public class PlayerMovement : MonoBehaviour
         // Wait for the ability duration
         yield return new WaitForSeconds(flamethrowerDuration);
         flameThrower.SetActive(false);
+        SetPlayerSprite(standardPlayerSprite);
         yield return new WaitForSeconds(flamethrowerCoolDown);
          flameThrowerCdImage.gameObject.SetActive(false);
         isFlamethrowerActive = false;
@@ -139,6 +145,7 @@ public void ActivateStomp()
     {
         if (!isStompActive)
         {
+            SetPlayerSprite(goblinPlayerSprite);
             stompCdImage.gameObject.SetActive(true);
             StartCoroutine(ActivateStompCoroutine());
         }
@@ -158,6 +165,7 @@ public void ActivateStomp()
         // Wait for the ability duration
         yield return new WaitForSeconds(stompDuration);
         stomp.SetActive(false);
+        SetPlayerSprite(standardPlayerSprite);
         yield return new WaitForSeconds(stompCoolDown);
         stompCdImage.gameObject.SetActive(false);
 
@@ -172,7 +180,7 @@ public void ActivateStomp()
 
         private void Shoot()
         {
-            Vector2 shootingDirection = new Vector2( body.transform.position.x + (lastPositionBulletStart.x * shootingPositionOffset), body.transform.position.y + (lastPositionBulletStart.y * shootingPositionOffset) + .5f);
+            Vector2 shootingDirection = new Vector2( body.transform.position.x + (lastPositionBulletStart.x * shootingPositionOffset), body.transform.position.y + (lastPositionBulletStart.y * shootingPositionOffset) );
             
             GameObject bullet = BulletObjectPool.SharedInstance.GetPooledObject(); 
             if (bullet != null) {
@@ -186,5 +194,8 @@ public void ActivateStomp()
         //bulletRigidbody.velocity = lastPositionBulletStart * (runSpeed + 5.0f) ;
         }
 
+    private void SetPlayerSprite(Sprite selectedSprite){
+        playerSpriteRenderer.sprite = selectedSprite; 
+    }
 
 }
