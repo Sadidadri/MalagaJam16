@@ -24,11 +24,15 @@ public class PlayerMovement : MonoBehaviour
     private bool isFlamethrowerActive = false;
     private float flamethrowerCoolDown = 4;
     float offset = 2.8f;
+    public Image flameThrowerLockImage;
+    public Image flameThrowerCdImage;
     //Config stomp
     public GameObject stomp;
     public float stompDuration = 0.5f; // Duration of the flamethrower in seconds
     private bool isStompActive = false;
     private float stompCoolDown = 6;
+    public Image stompLockImage;
+    public Image stompCdImage;
 
     public float runSpeed = 20.0f;
 
@@ -68,16 +72,24 @@ public class PlayerMovement : MonoBehaviour
     stomp.transform.position = new Vector2(transform.position.x,transform.position.y + .5f);
 
     if(levelNumber >= 1){
+        if(flameThrowerLockImage){
+                    Destroy(flameThrowerLockImage);
+                }
          if (Input.GetKey(KeyCode.E)) 
             {
+                
                 ActivateFlamethrower();
 
             }
     }
 
     if(levelNumber >= 1){
+          if(stompLockImage){
+                    Destroy(stompLockImage);
+                }
          if (Input.GetKey(KeyCode.Q)) 
             {
+              
                 ActivateStomp();
             }
     }
@@ -99,6 +111,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!isFlamethrowerActive)
         {
+            flameThrowerCdImage.gameObject.SetActive(true);
             StartCoroutine(ActivateFlameThrowerCoroutine());
         }
     }
@@ -118,7 +131,7 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(flamethrowerDuration);
         flameThrower.SetActive(false);
         yield return new WaitForSeconds(flamethrowerCoolDown);
-
+         flameThrowerCdImage.gameObject.SetActive(false);
         isFlamethrowerActive = false;
     }
 
@@ -126,6 +139,7 @@ public void ActivateStomp()
     {
         if (!isStompActive)
         {
+            stompCdImage.gameObject.SetActive(true);
             StartCoroutine(ActivateStompCoroutine());
         }
     }
@@ -145,6 +159,7 @@ public void ActivateStomp()
         yield return new WaitForSeconds(stompDuration);
         stomp.SetActive(false);
         yield return new WaitForSeconds(stompCoolDown);
+        stompCdImage.gameObject.SetActive(false);
 
         isStompActive = false;
     }
