@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     public float runSpeed = 20.0f;
 
     //Leveling count
-    [SerializeField] Text levelText;
+    [SerializeField] LevelingSystem levelingSystem;
     int levelNumber;
 
     void Start ()
@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update ()
     {
-    levelNumber = int.Parse(levelText.text);
+    levelNumber = levelingSystem.Level;
     // Movimiento del personaje
     horizontal = Input.GetAxisRaw("Horizontal");
     vertical = Input.GetAxisRaw("Vertical");

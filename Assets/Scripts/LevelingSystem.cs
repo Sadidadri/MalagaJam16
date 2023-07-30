@@ -10,6 +10,7 @@ public class LevelingSystem : MonoBehaviour
     int level = 0;
     int currentExp;
     int expToNextLevel;
+    public int Level { get; set; }
 
     [SerializeField] float firstLevelExp = 50f;
 
