@@ -67,7 +67,7 @@ public class EscenaIntroductoriaScript : MonoBehaviour
 
       
         if(currentTextIndex == 1){
-           SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+           SceneManager.LoadScene("Level1");
         }
         // Move to the next text
         currentTextIndex = (currentTextIndex + 1) % textMeshes.Length;
