@@ -16,7 +16,10 @@ public class PoliceEnemySpawnerScript : MonoBehaviour
         // Check if it's time to spawn a new enemy
         if (spawnTimer <= 0f)
         {
-            SpawnEnemy(1);
+            float random = Random.Range(0f, 1f);
+            Debug.Log(random);
+            if (random > .8)
+                SpawnEnemy(5);  
             spawnTimer = spawnInterval; // Reset the timer
         }
 
