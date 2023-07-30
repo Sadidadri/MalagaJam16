@@ -9,6 +9,7 @@ TagManager:
   - Camera
   - Score
   - Flamethrower
+  - Stomp
   layers:
   - Default
   - TransparentFX
