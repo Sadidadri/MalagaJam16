@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class MenuPrincipal : MonoBehaviour
 {
     [SerializeField]
-    GameObject menuPrincipal, menuOpciones;
+    GameObject menuPrincipal, menuOpciones, pantallaCreditos;
     [SerializeField]
     Slider volumeSlider;
     [SerializeField]
@@ -62,5 +62,16 @@ public class MenuPrincipal : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+    }
+
+    public void AbrirCreditos()
+    {
+        if(!pantallaCreditos.activeInHierarchy) pantallaCreditos.SetActive(true);
+    }
+
+    public void CerrarCreditos()
+    {
+        if (pantallaCreditos.activeInHierarchy) pantallaCreditos.SetActive(false);
+
     }
 }
